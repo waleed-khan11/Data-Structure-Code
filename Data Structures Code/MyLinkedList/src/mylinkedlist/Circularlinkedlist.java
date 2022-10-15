@@ -167,11 +167,9 @@ public class Circularlinkedlist<T>
         {
             System.out.println("List is Empty");
             return null;
-        } else if (Start == End)
-        {
-            Start = End = null;
-            return key;
-        } else
+        } 
+        
+        else
         {
             Node _t = Start;
             do
