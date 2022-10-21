@@ -37,13 +37,5 @@ public class Stack<T>
        return val;
       }
     }
-    public void print(){
-        node _t=start;
-        while(_t!=null){
-            System.out.print(_t.data+"=>");
-            _t=_t.next;
-            
-        }
-        System.out.println("null");
-    }
+    
 }
