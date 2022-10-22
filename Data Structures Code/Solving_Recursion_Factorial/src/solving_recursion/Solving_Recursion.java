@@ -20,7 +20,7 @@ public class Solving_Recursion
         // TODO code application logic here
         Recursion r = new Recursion();
         int a=r.Program(5);
-        System.out.println(a);
+        System.out.println("Factorial: "+a);
     }
     
 }
