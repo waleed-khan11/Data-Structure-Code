@@ -37,5 +37,4 @@ public class Stack<T>
        return val;
       }
     }
-    
 }
