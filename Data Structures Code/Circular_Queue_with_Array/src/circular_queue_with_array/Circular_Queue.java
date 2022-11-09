@@ -14,17 +14,17 @@ public class Circular_Queue<T>
 
     T[] arr;
     int Head = -1, tail = -1;
-    int a;
+    int size;
 
     public Circular_Queue(int a)
     {
-        this.a = a;
+        size = a;
         arr = (T[]) new Object[a];
     }
 
     public boolean isFull()
     {
-        if (Head + a == tail)
+        if (Head + size == tail)
         {
             return true;
         }
@@ -48,7 +48,7 @@ public class Circular_Queue<T>
         } else
         {
             tail++;
-            arr[tail % a] = value;
+            arr[tail % size] = value;
         }
 
     }
@@ -62,7 +62,7 @@ public class Circular_Queue<T>
         } else
         {
             Head++;
-            return arr[Head % a];
+            return arr[Head % size];
         }
     }
 
@@ -77,20 +77,20 @@ public class Circular_Queue<T>
         {
             return null;
         }
-        return arr[(Head + 1) % a];
+        return arr[(Head + 1) % size];
     }
 
     public void print()
     {
         if (isEmpty())
         {
-            return;
+            System.out.println("Queue is Empty");
         } else
         {
             System.out.print("Start<=");
-            for (int i = (Head + 1) % a; i <= tail % a; i++)
+            for (int i = Head + 1; i <= tail; i++)
             {
-                System.out.print(arr[i] + "<=");
+                System.out.print(arr[i % size] + "<=");
             }
             System.out.println("End");
         }
