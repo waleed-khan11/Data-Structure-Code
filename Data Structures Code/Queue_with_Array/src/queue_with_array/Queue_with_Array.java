@@ -53,6 +53,7 @@ public class Queue_with_Array
     q1.dequeue();
     System.out.println(q1.Size());
     q1.print();
+   
     
     }
     

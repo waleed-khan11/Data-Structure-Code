@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package queue_with_array;
+package doubleended_queue;
 
 /**
  *
  * @author Hp
  */
-public class Queue_Moving_Tail_Forward<T>
+public class DE_Queue<T>
 {
 
-    T[] arr = (T[]) new Object[10];
+    T[] arr;
     int tail = -1;
+
+    public DE_Queue(int a)
+    {
+        arr = (T[]) new Object[a];
+    }
 
     public boolean isFull()
     {
@@ -33,17 +38,17 @@ public class Queue_Moving_Tail_Forward<T>
         return false;
     }
 
+    public int size()
+    {
+        return tail + 1;
+    }
+
     public T peek()
     {
         return arr[0];
     }
 
-    public int Size()
-    {
-        return tail + 1;
-    }
-
-    public void enqueue(T val)
+    public void enqueueAtTail(T value)
     {
         if (isFull())
         {
@@ -51,11 +56,23 @@ public class Queue_Moving_Tail_Forward<T>
         } else
         {
             tail++;
-            arr[tail] = val;
+            arr[tail] = value;
         }
     }
 
-    public T dequeue()
+    public void enqueueAtHead(T value)
+    {
+        if (isFull())
+        {
+            System.out.println("Queue is Full");
+        } else
+        {
+            this.moveBackward();
+            arr[0] = value;
+        }
+    }
+
+    public T dequeueAtTail()
     {
         if (isEmpty())
         {
@@ -63,16 +80,38 @@ public class Queue_Moving_Tail_Forward<T>
             return null;
         } else
         {
-
             T val = arr[tail];
+            tail--;
+            return val;
+        }
+    }
+
+    public T dequeueAtHead()
+    {
+        if (isEmpty())
+        {
+            System.out.println("Queue is Empty");
+            return null;
+        } else
+        {
+            T val = arr[0];
             this.moveForward();
             return val;
         }
     }
 
+    public void moveBackward()
+    {
+        for (int i = tail; i >= 0; i--)
+        {
+            arr[i + 1] = arr[i];
+        }
+        tail++;
+    }
+
     public void moveForward()
     {
-        for (int i = 0; i < tail ; i++)
+        for (int i = 0; i <tail; i++)
         {
             arr[i] = arr[i + 1];
         }
@@ -83,10 +122,10 @@ public class Queue_Moving_Tail_Forward<T>
     {
         if (isEmpty())
         {
-            System.out.println("Queue is empty");
+            System.out.println("Queue is Empty");
         } else
         {
-            System.out.print("Start<=");
+            System.out.print("Start <=");
             for (int i = 0; i <= tail; i++)
             {
                 System.out.print(arr[i] + "<=");
@@ -94,5 +133,4 @@ public class Queue_Moving_Tail_Forward<T>
             System.out.println("End");
         }
     }
-
 }
