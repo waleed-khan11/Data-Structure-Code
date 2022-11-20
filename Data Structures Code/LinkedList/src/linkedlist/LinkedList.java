@@ -30,6 +30,7 @@ public class LinkedList
         l.deleteNode(5);
         boolean a = l.search(8);
         System.out.println(a);
+        l.deleteNode(4);
         l.print();
   
      
